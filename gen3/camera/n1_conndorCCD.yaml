@@ -1,5 +1,5 @@
-name: 'necam'
-plateScale: 1.24
+name: 'condorCCD'
+plateScale: 0.86
 transforms:
     nativeSys: 'FocalPlane'
     FieldAngle:
@@ -11,12 +11,12 @@ CCDs:
         id: 1
         serial: '1'
         detectorType: 0
-        bbox: [[0,0], [6144, 4096]]
+        bbox: [[0,0], [9576, 6388]]
         pixelSize: [1.,1.]
         transformDict:
             nativeSys: 'Pixels'
             transforms: 'None'
-        refpos: [3072,2048]
+        refpos: [4788,3194]
         offset: [0,0]
         transposeDetector: False
         pitch: 0.0
@@ -24,11 +24,11 @@ CCDs:
         roll: 0.0
         amplifiers:
             AMP_E2V:
-                rawBBox: [[0,0],[6144, 4096]]
+                rawBBox: [[0,0],[9576, 6388]]
                 hdu: 1
                 ixy: [0,0]
                 perAmpData: True
-                rawDataBBox: [[0,0],[6144, 4096]]
+                rawDataBBox: [[0,0],[9576, 6388]]
                 rawSerialOverscanBBox: [[0,0],[0, 0]]
                 rawParallelOverscanBBox: [[0,0],[0, 0]]
                 rawSerialPrescanBBox: [[0,0],[0, 0]]
