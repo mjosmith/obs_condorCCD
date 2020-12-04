@@ -1,13 +1,13 @@
 
-__all__ = ("NeCamTranslator", )
+__all__ = ("CondorCCDTranslator", )
 
 from astro_metadata_translator import cache_translation, FitsTranslator
 import astropy.units as u
 from astropy.time import Time
 from astropy.coordinates import SkyCoord, Angle
 
-class NeCamTranslator(FitsTranslator):
-    """Metadata translator for NeCam FITS headers.
+class CondorCCDTranslator(FitsTranslator):
+    """Metadata translator for CondorCCD FITS headers.
     
     Under normal circumstances, translators are found in the astro_metadata_translator repository. However, it is possible to also put them in an obs_package, provided that they are imported in both the _instrument.py and rawFormatter.py files.
 
@@ -15,10 +15,10 @@ class NeCamTranslator(FitsTranslator):
     """
 
     """Name of this translation class"""
-    name = "NeCam"
+    name = "CondorCCD"
 
     """Supports the Necam instrument."""
-    supported_instrument = "NeCam"
+    supported_instrument = "CondorCCD"
 
     """
     _const_map includes properties that you may not know, nor can calculate.
@@ -77,7 +77,7 @@ class NeCamTranslator(FitsTranslator):
         # Use INSTRUME. Because of defaulting behavior only do this
         # if we really have an INSTRUME header
         if "INSTRUME" in header:
-            if header["INSTRUME"] == "NECAM":
+            if header["INSTRUME"] == "CONDOR":
                 return True
         return False
 
@@ -107,8 +107,8 @@ class NeCamTranslator(FitsTranslator):
 
     @cache_translation
     def to_instrument(self):
-        if self._header["INSTRUME"] == "NECAM":
-            return "NeCam"
+        if self._header["INSTRUME"] == "CONDOR":
+            return "CondorCCD"
         else:
             #It should never get here, given can_translate().
             return "Unknown"
