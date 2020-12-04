@@ -2,32 +2,32 @@ import os
 from lsst.utils import getPackageDir
 from lsst.daf.butler.core.utils import getFullTypeName
 from lsst.obs.base import Instrument, yamlCamera
-from .necamFilters import NECAM_FILTER_DEFINITIONS
+from .condorCCDFilters import CONDOR_FILTER_DEFINITIONS
 from lsst.afw.cameraGeom import makeCameraFromPath, CameraConfig
 # Comment-out the following line if you put .translators/necam.py in the 
 # astro_metadata_translator repository:
-from .translators import NeCamTranslator
+from .translators import CondorCCDTranslator
 
-class NeCam(Instrument):
+class CondorCCD(Instrument):
     
     # Filter definitions are needed when registering the filters.
-    filterDefinitions = NECAM_FILTER_DEFINITIONS
+    filterDefinitions = CONDOR_FILTER_DEFINITIONS
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         
         # Tell it where the config file are:
-        packageDir = getPackageDir("obs_necam")
+        packageDir = getPackageDir("obs_condorCCD")
         self.configPaths = [os.path.join(packageDir, "config")]
         
     def getCamera(self):
         '''
-        This grabs the camera information in the camera/n1_necam.yaml file.
+        This grabs the camera information in the camera/n1_condorCCD.yaml file.
         '''
         path = os.path.join(
-            getPackageDir("obs_necam"), 
+            getPackageDir("obs_condorCCD"), 
             "camera", 
-            'n1_necam.yaml')
+            'n1_condorCCD.yaml')
         return yamlCamera.makeCamera(path)
 
     @classmethod
@@ -35,11 +35,11 @@ class NeCam(Instrument):
         '''
         This must return the instrument name.
         '''
-        return "NeCam"
+        return "CondorCCD"
 
     def getRawFormatter(self, dataId):
-        from .rawFormatter import NeCamRawFormatter
-        return NeCamRawFormatter
+        from .rawFormatter import CondorCCDRawFormatter
+        return CondorCCDRawFormatter
 
     def makeDataIdTranslatorFactory(self):
         '''
