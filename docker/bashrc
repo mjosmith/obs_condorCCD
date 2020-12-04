@@ -5,8 +5,8 @@ echo "EUPS setup"
 
 # Set up obs_necam:
 eups declare obs_necam gen2 -r /opt/lsst/software/stack/stack/current/Linux64/obs_necam/gen2
-eups declare obs_necam gen3 -r /opt/lsst/software/stack/stack/current/Linux64/obs_necam/gen3
-eups declare -t current obs_necam gen3
+eups declare obs_condorCCD gen3 -r /opt/lsst/software/stack/stack/current/Linux64/obs_condorCCD/gen3
+eups declare -t current obs_condorCCD gen3
 
 #Export display variables
 export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb
