@@ -1,1 +1,1 @@
-from .necam import *
+from .condorCCD import *
